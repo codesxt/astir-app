@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{event.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      Descripción del evento
+    </ion-card-header>
+    <ion-card-content>
+      {{event.description}}
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <ion-item *ngIf="event.where">
+        <ion-icon name="locate" item-left large></ion-icon>
+        <h2>¿Dónde?</h2>
+        <p>{{ event.where }}</p>
+      </ion-item>
+      <ion-item *ngIf="event.when">
+        <ion-icon name="clock" item-left large></ion-icon>
+        <h2>¿Cuándo?</h2>
+        <p>{{ event.when.start }}</p>
+      </ion-item>
+      <ion-item *ngIf="event.cost">
+        <ion-icon name="pricetags" item-left large></ion-icon>
+        <h2>¿Cuánto?</h2>
+        <ion-list>
+          <ion-item *ngFor="let c of event.cost">{{c.text}}: ${{c.value}}</ion-item>
+        </ion-list>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
