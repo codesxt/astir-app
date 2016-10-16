@@ -3,6 +3,7 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { EventDetailPage } from '../pages/event-detail-page/event-detail-page';
+import { FeaturedEventsPage } from '../pages/featured-events/featured-events';
 import { Storage } from '@ionic/storage';
 import { Data } from '../providers/data';
 
@@ -10,6 +11,7 @@ import { Data } from '../providers/data';
   declarations: [
     MyApp,
     HomePage,
+    FeaturedEventsPage,
     EventDetailPage
   ],
   imports: [
@@ -19,6 +21,7 @@ import { Data } from '../providers/data';
   entryComponents: [
     MyApp,
     HomePage,
+    FeaturedEventsPage,
     EventDetailPage
   ],
   providers: [Storage, Data]
