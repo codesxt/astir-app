@@ -9,6 +9,8 @@ import { Data } from '../../providers/data';
 })
 export class EventsListPage {
   public events = [];
+  public searchText: string = "";
+  public searchBarVisible: boolean = false;
 
   constructor(public navCtrl: NavController, public dataService: Data) {
     this.events = this.dataService.getData();
@@ -26,5 +28,13 @@ export class EventsListPage {
     this.navCtrl.push(EventDetailPage, {
       event: event
     });
+  }
+
+  toggleSearchBar(){
+    this.searchBarVisible = !this.searchBarVisible;
+  }
+
+  onInput($event){
+    console.log(this.searchText);
   }
 }

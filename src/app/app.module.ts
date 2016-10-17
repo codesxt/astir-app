@@ -4,7 +4,6 @@ import { MyApp } from './app.component';
 import { Storage } from '@ionic/storage';
 import { Data } from '../providers/data';
 
-import { HomePage } from '../pages/home/home';
 import { EventsListPage } from '../pages/events-list-page/events-list-page';
 import { EventDetailPage } from '../pages/event-detail-page/event-detail-page';
 import { FeaturedEventsPage } from '../pages/featured-events/featured-events';
@@ -13,7 +12,6 @@ import { InfoPage } from '../pages/info-page/info-page';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     EventsListPage,
     FeaturedEventsPage,
     EventDetailPage,
@@ -25,7 +23,6 @@ import { InfoPage } from '../pages/info-page/info-page';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     EventsListPage,
     FeaturedEventsPage,
     EventDetailPage,
