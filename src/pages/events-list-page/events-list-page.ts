@@ -4,10 +4,10 @@ import { EventDetailPage } from '../event-detail-page/event-detail-page';
 import { Data } from '../../providers/data';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-events-list',
+  templateUrl: 'events-list-page.html'
 })
-export class HomePage {
+export class EventsListPage {
   public events = [];
 
   constructor(public navCtrl: NavController, public dataService: Data) {
@@ -27,5 +27,4 @@ export class HomePage {
       event: event
     });
   }
-
 }

@@ -6,7 +6,7 @@
         </button>
     </ion-buttons>
     <ion-title>
-        Inicio
+      Lista de Eventos
     </ion-title>
     <ion-buttons end>
         <button ion-button icon-only (click)="addItem()"><ion-icon name="add-circle"></ion-icon></button>
@@ -16,6 +16,16 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item button *ngFor="let event of events" (click)="viewEvent(event)">{{event.title}}</ion-item>
+    <ion-item button *ngFor="let event of events" (click)="viewEvent(event)">
+      <ion-thumbnail item-left>
+        <img src="assets/img/card-saopaolo.png"/>
+      </ion-thumbnail>
+      {{event.title}}
+      <p *ngIf="!event.cost">
+        Entrada Liberada
+      </p>
+      <p *ngIf="event.when">{{event.when.start}}</p>
+      <p *ngIf="event.where">{{event.where}}</p>
+    </ion-item>
   </ion-list>
 </ion-content>
