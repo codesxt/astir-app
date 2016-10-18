@@ -25,7 +25,7 @@
 <ion-content padding>
   <span *ngIf="searchText">Estás buscando: {{searchText}}</span>
   <ion-list>
-    <ion-item button *ngFor="let event of events" (click)="viewEvent(event)">
+    <ion-item button *ngFor="let event of (events | eventsFilter:searchText)" (click)="viewEvent(event)">
       <ion-thumbnail item-left>
         <img src="assets/img/card-saopaolo.png"/>
       </ion-thumbnail>

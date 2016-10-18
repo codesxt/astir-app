@@ -9,13 +9,16 @@ import { EventDetailPage } from '../pages/event-detail-page/event-detail-page';
 import { FeaturedEventsPage } from '../pages/featured-events/featured-events';
 import { InfoPage } from '../pages/info-page/info-page';
 
+import { EventsFilterPipe } from '../pipes/events-filter';
+
 @NgModule({
   declarations: [
     MyApp,
     EventsListPage,
     FeaturedEventsPage,
     EventDetailPage,
-    InfoPage
+    InfoPage,
+    EventsFilterPipe
   ],
   imports: [
     IonicModule.forRoot(MyApp)
