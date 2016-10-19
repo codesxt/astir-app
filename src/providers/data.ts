@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 export class Data {
   public events = [{
     "id": 1,
-    "title": "Concierto de Temporada N° 8",
+    "title": "Concierto de Temporada N° 8 Título Largo",
     "category": "Música",
     "description": "Una pequeña descripción.",
     "when":{

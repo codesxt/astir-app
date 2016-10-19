@@ -1,12 +1,12 @@
 <ion-header>
-  <ion-navbar color="secondary">
+  <ion-navbar color="primary">
     <ion-buttons left>
         <button ion-button icon-only menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
     </ion-buttons>
     <ion-title>
-      <span *ngIf="!searchBarVisible">Título</span>
+      <span *ngIf="!searchBarVisible">Lista de Eventos</span>
       <ion-searchbar
         [(ngModel)]="searchText"
         placeholder="Buscar"
@@ -22,14 +22,16 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <span *ngIf="searchText">Estás buscando: {{searchText}}</span>
   <ion-list>
-    <ion-item button *ngFor="let event of (events | eventsFilter:searchText)" (click)="viewEvent(event)">
+    <ion-item button
+    *ngFor="let event of (events | eventsFilter:searchText)"
+    (click)="viewEvent(event)" text-wrap>
       <ion-thumbnail item-left>
-        <img src="assets/img/card-saopaolo.png"/>
+        <img src="assets/img/list-thumbnail.png"/>
       </ion-thumbnail>
-      {{event.title}}
+      <span class="label-title">{{event.category}}: {{event.title}}</span>
       <p *ngIf="!event.cost">
         Entrada Liberada
       </p>

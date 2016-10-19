@@ -5,10 +5,10 @@ import {Pipe} from '@angular/core';
   pure: false
 })
 export class EventsFilterPipe {
-  transform(events: any[], params: string[]) {
-    if(params[0] == null) { return events; }
+  transform(events: any[], params: string) {
+    if(params == null) { return events; }
     if(events == null) { return null; }
-    let query = params[0].toLowerCase();
+    let query = params.toLowerCase();
     return events.filter(event =>
         event.title.toLowerCase().indexOf(query) > -1
     );

@@ -7,14 +7,17 @@ page-featured-events {
     .card-title {
       position: absolute;
       top: 36%;
+      width: 90%;
+      left: 5%;
       font-size: 2.0em;
-      width: 100%;
-      font-weight: bold;
+      font-weight: light;
+      text-align: center;
       color: #fff;
     }
     .card-subtitle {
-      font-size: 1.0em;
-      position: absolute;
+      font-size: .5em;
+      font-weight:lighter;
+      position: static;
       top: 52%;
       width: 100%;
       color: #fff;
