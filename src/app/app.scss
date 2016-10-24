@@ -14,3 +14,19 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+/*
+.popover-md .popover-content {
+  -webkit-transform-origin: top right !important;
+  transform-origin: top right !important;
+}
+.popover-content{
+  top: 5% !important;
+  height: auto !important;
+  transform: scale(1);
+  transition: none 0s ease 0s ;
+}
+
+.popover-md .popover-content {
+  -webkit-transform-origin: top right !important;
+  transform-origin: top right !important;
+}*/

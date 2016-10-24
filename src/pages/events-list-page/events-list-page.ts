@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, PopoverController } from 'ionic-angular';
+
 import { EventDetailPage } from '../event-detail-page/event-detail-page';
+import { PopOverSearch } from '../pop-over-search/pop-over-search';
 import { Data } from '../../providers/data';
 
 @Component({
@@ -9,19 +11,34 @@ import { Data } from '../../providers/data';
 })
 export class EventsListPage {
   public events = [];
-  public searchText: string = "";
-  public searchBarVisible: boolean = false;
+  public filterVisible: boolean = false;
+  public category: string = "";
+  public categories = [
+    {value: "any", name: "Todas"},
+    {value: "music", name: "Música"},
+    {value: "theatre", name: "Teatro"},
+    {value: "exposition", name: "Exposición"},
+    {value: "festival", name: "Festival"},
+    {value: "fair", name: "Feria"},
+    {value: "talk", name: "Charla"},
+    {value: "movie", name: "Aire Libre"}
+  ];
 
-  constructor(public navCtrl: NavController, public dataService: Data) {
-    this.events = this.dataService.getData();
+  public filter = {
+    searchText: "",
+    category: ""
+  }
+
+  constructor(
+    public navCtrl: NavController,
+    public popoverCtrl: PopoverController,
+    public dataService: Data) {
+      this.events = this.dataService.getData();
+      this.filter.category = this.categories[0].value;
   }
 
   ionViewDidLoad(){
     //Called when page view is loaded (lifecycle function)
-  }
-
-  addItem(){
-
   }
 
   viewEvent(event){
@@ -30,11 +47,24 @@ export class EventsListPage {
     });
   }
 
-  toggleSearchBar(){
-    this.searchBarVisible = !this.searchBarVisible;
+  onSearchText(event){
+    //console.log(this.filter.searchText);
   }
 
-  onInput($event){
-    console.log(this.searchText);
+  togglePopover(event) {
+    let popover = this.popoverCtrl.create(
+      PopOverSearch,
+      {},
+      {
+        showBackdrop: true
+      }
+    );
+    popover.present({
+      ev: event
+    });
+  }
+
+  toggleFilter(event){
+    this.filterVisible = !this.filterVisible;
   }
 }
