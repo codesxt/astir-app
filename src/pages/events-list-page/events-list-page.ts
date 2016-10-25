@@ -1,17 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NavController, PopoverController } from 'ionic-angular';
 
 import { EventDetailPage } from '../event-detail-page/event-detail-page';
 import { PopOverSearch } from '../pop-over-search/pop-over-search';
 import { Data } from '../../providers/data';
 
+//Imports for web animations
+import { trigger, state, style, transition, animate, keyframes } from '@angular/core';
+
 @Component({
   selector: 'page-events-list',
-  templateUrl: 'events-list-page.html'
+  templateUrl: 'events-list-page.html',
+  changeDetection:ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('slideIn', [
+      state('in', style({
+        opacity: 1,
+        transform: 'translate3d(0, 0, 0)',
+        display: 'block',
+        visibility: 'visible',
+      })),
+      state('out', style({
+        opacity: 0,
+        transform: 'translate3d(0, -100%, 0)',
+        display: 'none',
+        visibility: 'hidden',
+      })),
+      transition('in <=> out', animate('400ms ease'))
+    ]),
+  ]
 })
 export class EventsListPage {
   public events = [];
-  public filterVisible: boolean = false;
+  public filterState: string = "out";
   public category: string = "";
   public categories = [
     {value: "any", name: "Todas"},
@@ -23,10 +44,16 @@ export class EventsListPage {
     {value: "talk", name: "Charla"},
     {value: "movie", name: "Aire Libre"}
   ];
+  public dateOptions = [
+    {value: 'month', name: 'Este mes'},
+    {value: 'week', name: 'Esta semana'},
+    {value: 'today', name: 'Hoy'}
+  ];
 
   public filter = {
     searchText: "",
-    category: ""
+    category: "",
+    date: "month"
   }
 
   constructor(
@@ -65,6 +92,7 @@ export class EventsListPage {
   }
 
   toggleFilter(event){
-    this.filterVisible = !this.filterVisible;
+    this.filterState = (this.filterState == "in") ? "out" : "in";
+    console.log(this.filterState);
   }
 }

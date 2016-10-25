@@ -21,8 +21,7 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="filterVisible">
-    <ion-list no-lines>
+    <ion-list no-lines [@slideIn]="filterState">
       <ion-item>
         <ion-searchbar
           [(ngModel)]="filter.searchText"
@@ -38,8 +37,19 @@
             *ngFor="let cat of categories"
             (click)="categorySelected(cat)"
             [value]="cat.value"
-            [selected]="cat == filter.category">
+            [selected]="cat.value == filter.category">
             {{cat.name}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cuándo:</ion-label>
+        <ion-select [(ngModel)]="filter.date">
+          <ion-option
+            *ngFor="let dat of dateOptions"
+            [value]="dat.value"
+            [selected]="dat.value == filter.date">
+            {{dat.name}}
           </ion-option>
         </ion-select>
       </ion-item>
@@ -47,7 +57,6 @@
         <span *ngIf="filter.searchText">Estás buscando: {{filter.searchText}}</span>
       </ion-item>
     </ion-list>
-  </div>
   <ion-list>
     <ion-item button
     *ngFor="let event of (events | eventsFilter:[filter.searchText,filter.category])"
@@ -55,11 +64,13 @@
       <ion-thumbnail item-left>
         <img src="assets/img/list-thumbnail.png"/>
       </ion-thumbnail>
-      <span class="label-title">{{event.category}}: {{event.title}}</span>
+      <span class="label-title">{{(event.category | categoryTranslate)}}: {{event.title}}</span>
       <p *ngIf="!event.cost">
         Entrada Liberada
       </p>
-      <p *ngIf="event.when">{{event.when.start}}</p>
+      <p *ngIf="event.when">
+        {{event.when.start}}
+      </p>
       <p *ngIf="event.where">{{event.where}}</p>
     </ion-item>
   </ion-list>

@@ -11,6 +11,7 @@ import { InfoPage } from '../pages/info-page/info-page';
 import { PopOverSearch } from '../pages/pop-over-search/pop-over-search';
 
 import { EventsFilterPipe } from '../pipes/events-filter';
+import { CategoryTranslatePipe } from '../pipes/category-translate';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { EventsFilterPipe } from '../pipes/events-filter';
     EventDetailPage,
     InfoPage,
     PopOverSearch,
-    EventsFilterPipe
+    EventsFilterPipe,
+    CategoryTranslatePipe
   ],
   imports: [
     IonicModule.forRoot(MyApp)
