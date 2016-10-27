@@ -12,6 +12,7 @@ import { PopOverSearch } from '../pages/pop-over-search/pop-over-search';
 
 import { EventsFilterPipe } from '../pipes/events-filter';
 import { CategoryTranslatePipe } from '../pipes/category-translate';
+import { TimeFormatPipe } from '../pipes/time-format';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CategoryTranslatePipe } from '../pipes/category-translate';
     InfoPage,
     PopOverSearch,
     EventsFilterPipe,
-    CategoryTranslatePipe
+    CategoryTranslatePipe,
+    TimeFormatPipe
   ],
   imports: [
     IonicModule.forRoot(MyApp)

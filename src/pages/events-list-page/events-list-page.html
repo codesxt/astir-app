@@ -57,21 +57,26 @@
         <span *ngIf="filter.searchText">Estás buscando: {{filter.searchText}}</span>
       </ion-item>
     </ion-list>
-  <ion-list>
-    <ion-item button
+  <ion-list class="event-list">
+    <ion-item button no-lines
     *ngFor="let event of (events | eventsFilter:[filter.searchText,filter.category])"
-    (click)="viewEvent(event)" text-wrap>
+    (click)="viewEvent(event)"
+    class="events-list">
       <ion-thumbnail item-left>
-        <img src="assets/img/list-thumbnail.png"/>
+        <img src="assets/img/temp-icon2.png"/>
       </ion-thumbnail>
-      <span class="label-title">{{(event.category | categoryTranslate)}}: {{event.title}}</span>
-      <p *ngIf="!event.cost">
-        Entrada Liberada
-      </p>
-      <p *ngIf="event.when">
-        {{event.when.start}}
-      </p>
-      <p *ngIf="event.where">{{event.where}}</p>
+      <span class="event-title">
+        {{(event.category | categoryTranslate)}}: {{event.title}}
+      </span>
+      <span class="event-summary">
+        <p *ngIf="!event.cost">
+          Entrada Liberada
+        </p>
+        <p *ngIf="event.when">
+          {{(event.when.start | timeFormat:'timeTo')}}
+        </p>
+        <p *ngIf="event.where">{{event.where}}</p>
+      </span>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -20,7 +20,7 @@
       <ion-item *ngIf="event.when">
         <ion-icon name="clock" item-left large></ion-icon>
         <h2>¿Cuándo?</h2>
-        <p>{{ event.when.start }}</p>
+        <p>{{ (event.when.start | timeFormat:'normal') }}</p>
       </ion-item>
       <ion-item *ngIf="event.cost">
         <ion-icon name="pricetags" item-left large></ion-icon>

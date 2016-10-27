@@ -1,19 +1,69 @@
 page-events-list {
+  .event-list{
+    .item-md{
+      padding-left: 5px !important;
+      background-color: #b92e2e;
+      .event-title{
+        color: white;
+      }
+      .event-summary p{
+        color: rgb(245, 179, 179) !important;
+      }
+    }
+
+    .label-md{
+      margin: 0px 0px 0px 0px;
+    }
+    .label-md .label-title{
+      word-wrap: break-word;
+      text-overflow: ellipsis;
+    }
+  }
+  /*
   .item-md{
-    padding-left: 5px !important;
+    padding-left: 0px !important;
+    //background-color: rgb(163, 59, 59) !important;
   }
 
-  .label-md{
-    margin: 0px 0px 0px 0px;
-  }
-  .label-md:first-line{
-    //background-color: red;
-  }
-  .label-md .label-title{
-    word-wrap: break-word;
-    text-overflow: ellipsis;
-  }
+  .events-list{
+    .label-md{
+      margin: 0px 0px 0px 0px;
+      background-color: black;
+      word-wrap: break-word;
+      text-overflow: ellipsis;
+      .category-music{    background-color: rgb(163, 59, 59) !important; }
+      .category-theatre{  background-color: rgb(59, 59, 59) !important;  }
+      .category-festival{ background-color: rgb(3, 116, 21) !important; }
+      .category-fair{     background-color: rgb(0, 52, 189) !important; }
+      .category-movie{    background-color: rgb(58, 1, 110) !important; }
+      .category-exposition{ background-color: rgb(162, 64, 42) !important; }
+      .category-outdoor{  background-color: rgb(154, 176, 11) !important; }
+      .category-talk{     background-color: rgb(96, 171, 22) !important; }
+      .event-item{
+        min-height:6em;
+        width: 100%;
+        margin:0;
+        padding: 0;
+        border: 0;
 
+        .event-title{
+          display:block;
+          padding-top: 10px !important;
+          color:white !important;
+        }
+        .event-summary p{
+          color:white !important;
+          text-indent: 1em;
+        }
+        img {
+          float: left;
+          max-height: 6em;
+          margin-right: 10px;
+        }
+
+      }
+    }
+  }*/
   /*
   ion-thumbnail img{
     position: absolute;
