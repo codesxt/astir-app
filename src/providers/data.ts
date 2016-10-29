@@ -1,6 +1,9 @@
 import { Storage } from '@ionic/storage';
 import { Injectable } from '@angular/core';
 
+import moment from 'moment/min/moment-with-locales.min';
+moment.locale('es');
+
 @Injectable()
 export class Data {
   public events = [{
@@ -34,6 +37,9 @@ export class Data {
     "title": "Evento 3",
     "category": "festival",
     "description": "Uff... ¡pero qué evento!",
+    "when":{
+      "start": "2016-11-17T20:00:00.000Z"
+    },
     "where": "Dirección o lugar del evento"
   }];
 
@@ -41,6 +47,9 @@ export class Data {
 
   constructor(public storage: Storage) {
     this.events = this.events.concat(this.moreEvents);
+    this.events = this.events.sort(function(a,b){
+      return moment(a.when.start).diff(b.when.start);
+    });
   }
 
   getData(){

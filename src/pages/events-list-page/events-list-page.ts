@@ -53,7 +53,7 @@ export class EventsListPage {
   public filter = {
     searchText: "",
     category: "",
-    date: "month"
+    dateRange: "month"
   }
 
   constructor(
@@ -93,6 +93,5 @@ export class EventsListPage {
 
   toggleFilter(event){
     this.filterState = (this.filterState == "in") ? "out" : "in";
-    console.log(this.filterState);
   }
 }

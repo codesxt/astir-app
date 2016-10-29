@@ -16,6 +16,12 @@ export class TimeFormatPipe {
         return temp[0].toUpperCase() + temp.slice(1);
       }case 'normal':{
         return moment(date).format('LLL');
+      }case 'onlyDay':{
+        return moment(date).format('DD');
+      }case 'onlyMonthShort':{
+        var temp = moment(date).format('MMM');
+        temp = temp[0].toUpperCase() + temp.slice(1,3);
+        return temp;
       }default:{
         return date;
       }

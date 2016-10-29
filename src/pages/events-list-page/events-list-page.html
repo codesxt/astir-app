@@ -21,59 +21,75 @@
 </ion-header>
 
 <ion-content>
-    <ion-list no-lines [@slideIn]="filterState">
-      <ion-item>
-        <ion-searchbar
-          [(ngModel)]="filter.searchText"
-          (ionInput)="onSearchText($event)"
-          placeholder="Buscar"
-          animated="true">
-        </ion-searchbar>
-      </ion-item>
-      <ion-item>
-        <ion-label>Categoría</ion-label>
-        <ion-select [(ngModel)]="filter.category">
-          <ion-option
-            *ngFor="let cat of categories"
-            (click)="categorySelected(cat)"
-            [value]="cat.value"
-            [selected]="cat.value == filter.category">
-            {{cat.name}}
-          </ion-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label>Cuándo:</ion-label>
-        <ion-select [(ngModel)]="filter.date">
-          <ion-option
-            *ngFor="let dat of dateOptions"
-            [value]="dat.value"
-            [selected]="dat.value == filter.date">
-            {{dat.name}}
-          </ion-option>
-        </ion-select>
-      </ion-item>
-      <ion-item *ngIf="filter.searchText">
-        <span *ngIf="filter.searchText">Estás buscando: {{filter.searchText}}</span>
-      </ion-item>
-    </ion-list>
-  <ion-list class="event-list">
-    <ion-item button no-lines
-    *ngFor="let event of (events | eventsFilter:[filter.searchText,filter.category])"
+  <ion-list no-lines [@slideIn]="filterState" class="events-filter">
+    <ion-item>
+      <ion-searchbar
+        [(ngModel)]="filter.searchText"
+        (ionInput)="onSearchText($event)"
+        placeholder="Buscar"
+        animated="true">
+      </ion-searchbar>
+    </ion-item>
+    <ion-item>
+      <ion-label>Categoría</ion-label>
+      <ion-select [(ngModel)]="filter.category">
+        <ion-option
+          *ngFor="let cat of categories"
+          (click)="categorySelected(cat)"
+          [value]="cat.value"
+          [selected]="cat.value == filter.category">
+          {{cat.name}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cuándo:</ion-label>
+      <ion-select [(ngModel)]="filter.dateRange">
+        <ion-option
+          *ngFor="let dat of dateOptions"
+          [value]="dat.value"
+          [selected]="dat.value == filter.dateRange">
+          {{dat.name}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="filter.searchText">
+      <span *ngIf="filter.searchText">Estás buscando: {{filter.searchText}}</span>
+    </ion-item>
+  </ion-list>
+  <ion-list no-lines class="event-list">
+    <ion-item button
+    *ngFor="let event of (events | eventsFilter:[filter.searchText,filter.category,filter.dateRange])"
     (click)="viewEvent(event)"
     class="events-list">
-      <ion-thumbnail item-left>
-        <img src="assets/img/temp-icon2.png"/>
-      </ion-thumbnail>
+      <!--
+      <ion-avatar item-left>
+        <img src="assets/img/temp-icon.png"/>
+      </ion-avatar>
+      -->
+      <div class="event-ticket">
+        <span class="event-ticket-day">
+          {{(event.when.start | timeFormat:'onlyDay')}}
+        </span>
+        <span class="event-ticket-month">
+          {{(event.when.start | timeFormat:'onlyMonthShort')}}
+        </span>
+        <span class="event-ticket-category">
+          {{ (event.category | categoryTranslate) }}
+        </span>
+      </div>
       <span class="event-title">
-        {{(event.category | categoryTranslate)}}: {{event.title}}
+        {{ event.title }}
       </span>
       <span class="event-summary">
-        <p *ngIf="!event.cost">
-          Entrada Liberada
-        </p>
-        <p *ngIf="event.when">
+        <p>{{ event.description }}</p>
+        <p>
+        <span *ngIf="!event.cost">
+          Entrada Liberada -
+        </span>
+        <span *ngIf="event.when">
           {{(event.when.start | timeFormat:'timeTo')}}
+        </span>
         </p>
         <p *ngIf="event.where">{{event.where}}</p>
       </span>
