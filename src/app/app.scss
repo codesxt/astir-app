@@ -30,3 +30,18 @@
   -webkit-transform-origin: top right !important;
   transform-origin: top right !important;
 }*/
+
+@font-face {
+  font-family: 'RisingSun-Hairline';
+  src: url('../assets/fonts/RisingSun-Hairline.woff');
+}
+
+@font-face {
+  font-family: 'RisingSun-Light';
+  src: url('../assets/fonts/RisingSun-Light.woff');
+}
+
+ion-header{
+  font-family: 'RisingSun-Light';
+  font-weight: 800;
+}

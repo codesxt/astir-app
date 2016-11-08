@@ -60,12 +60,20 @@ export class EventsListPage {
     public navCtrl: NavController,
     public popoverCtrl: PopoverController,
     public dataService: Data) {
-      this.events = this.dataService.getData();
+      //this.events = this.dataService.getData();
+      this.loadEvents();
       this.filter.category = this.categories[0].value;
   }
 
   ionViewDidLoad(){
     //Called when page view is loaded (lifecycle function)
+  }
+
+  loadEvents(){
+    this.dataService.load()
+    .then(data => {
+      this.events = data;
+    });
   }
 
   viewEvent(event){
