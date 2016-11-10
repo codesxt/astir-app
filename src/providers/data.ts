@@ -75,9 +75,8 @@ export class Data {/*
 
     return new Promise(resolve => {
       this.http.get('https://astir.herokuapp.com/api/v1/events')
-        .map(res => res.json())
         .subscribe(data => {
-          this.events = data;
+          this.events = data.json();
           resolve(this.events);
         });
     });

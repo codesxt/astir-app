@@ -10,16 +10,17 @@ moment.locale('es');
 export class TimeFormatPipe {
   transform(date: string, mode: string) {
     if(mode==null){return date};
+    var temp = "";
     switch(mode){
       case 'timeTo':{
-        var temp = moment(date).fromNow();
+        temp = moment(date).fromNow();
         return temp[0].toUpperCase() + temp.slice(1);
       }case 'normal':{
         return moment(date).format('LLL');
       }case 'onlyDay':{
         return moment(date).format('DD');
       }case 'onlyMonthShort':{
-        var temp = moment(date).format('MMM');
+        temp = moment(date).format('MMM');
         temp = temp[0].toUpperCase() + temp.slice(1,3);
         return temp;
       }default:{

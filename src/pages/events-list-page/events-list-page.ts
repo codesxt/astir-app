@@ -6,12 +6,12 @@ import { PopOverSearch } from '../pop-over-search/pop-over-search';
 import { Data } from '../../providers/data';
 
 //Imports for web animations
-import { trigger, state, style, transition, animate, keyframes } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/core';
 
 @Component({
   selector: 'page-events-list',
   templateUrl: 'events-list-page.html',
-  changeDetection:ChangeDetectionStrategy.OnPush,
+  changeDetection:ChangeDetectionStrategy.Default,
   animations: [
     trigger('slideIn', [
       state('in', style({
@@ -31,7 +31,7 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
   ]
 })
 export class EventsListPage {
-  public events = [];
+  events: any = [];
   public filterState: string = "out";
   public category: string = "";
   public categories = [
