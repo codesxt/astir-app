@@ -74,7 +74,10 @@ export class Data {/*
     }
 
     return new Promise(resolve => {
-      this.http.get('https://astir.herokuapp.com/api/v1/events')
+      var url = 'https://astir.herokuapp.com/api/v1/events';
+      //var url = 'http://localhost:3000/api/v1/events';
+      //var url = 'http://192.168.1.45:3000/api/v1/events';
+      this.http.get(url)
         .subscribe(data => {
           this.events = data.json();
           resolve(this.events);

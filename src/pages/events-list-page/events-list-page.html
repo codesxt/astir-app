@@ -58,6 +58,9 @@
     </ion-item>
   </ion-list>
   <ion-list no-lines class="event-list">
+    <ion-item *ngIf="loadingEvents">
+      Cargando eventos...
+    </ion-item>
     <ion-item button
     *ngFor="let event of (events | eventsFilter:[filter.searchText,filter.category,filter.dateRange])"
     (click)="viewEvent(event)"

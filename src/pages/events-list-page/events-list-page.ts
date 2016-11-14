@@ -32,6 +32,7 @@ import { trigger, state, style, transition, animate } from '@angular/core';
 })
 export class EventsListPage {
   events: any = [];
+  public loadingEvents: boolean = false;
   public filterState: string = "out";
   public category: string = "";
   public categories = [
@@ -70,9 +71,11 @@ export class EventsListPage {
   }
 
   loadEvents(){
+    this.loadingEvents = true;
     this.dataService.load()
     .then(data => {
       this.events = data;
+      this.loadingEvents = false;
     });
   }
 

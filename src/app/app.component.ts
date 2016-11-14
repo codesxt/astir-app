@@ -5,7 +5,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { EventsListPage } from '../pages/events-list-page/events-list-page';
 import { FeaturedEventsPage } from '../pages/featured-events/featured-events';
 import { InfoPage } from '../pages/info-page/info-page';
-
+import { SettingsPage } from '../pages/settings-page/settings-page';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,7 +21,8 @@ export class MyApp {
     this.pages = [
       { title: 'Eventos Destacados', component: FeaturedEventsPage},
       { title: 'Lista de Eventos', component: EventsListPage},
-      { title: 'Acerca de', component: InfoPage}
+      { title: 'Acerca de', component: InfoPage},
+      { title: 'Configuraciones', component: SettingsPage }
     ];
   }
 

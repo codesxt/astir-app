@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, NavController } from 'ionic-angular';
 
-/*
-  Generated class for the EventDetailPage page.
+import { MapViewPage } from '../map-view-page/map-view-page';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-event-detail-page',
   templateUrl: 'event-detail-page.html'
@@ -14,7 +10,9 @@ import { NavParams } from 'ionic-angular';
 export class EventDetailPage {
   event;
 
-  constructor(public navParams: NavParams) {
+  constructor(
+    public navParams: NavParams,
+    public navCtrl: NavController) {
 
   }
 
@@ -22,4 +20,10 @@ export class EventDetailPage {
     this.event = this.navParams.get('event');
   }
 
+  viewInMap(){
+    let location = [-31.127893, -43.718293];
+    this.navCtrl.push(MapViewPage, {
+      location: location
+    });
+  }
 }

@@ -1,33 +1,48 @@
-<ion-header>
+<ion-header no-shadow>
   <ion-navbar color="primary">
     <ion-title>Detalles del Evento</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+  <div class="event-title">
+    <h1>{{(event.category | categoryTranslate)}}: <br/>{{event.title}}</h1>
+  </div>
+  <div class="event-description">
+    <p>{{event.description}}</p>
+  </div>
   <ion-card>
-    <ion-card-header>
-      {{event.title}}
-    </ion-card-header>
-    <ion-card-content>
-      {{event.description}}      
-      <ion-item *ngIf="event.where">
+    <ion-list>
+      <ion-item text-wrap>
         <ion-icon name="locate" item-left large></ion-icon>
-        <h2>¿Dónde?</h2>
+        <h2>Ubicación</h2>
         <p>{{ event.where }}</p>
+        <button ion-button block color="light" (click)="viewInMap()">Ver en el mapa</button>
       </ion-item>
-      <ion-item *ngIf="event.when">
+      <ion-item text-wrap>
         <ion-icon name="clock" item-left large></ion-icon>
-        <h2>¿Cuándo?</h2>
+        <h2>Horario</h2>
         <p>{{ (event.when.start | timeFormat:'normal') }}</p>
       </ion-item>
-      <ion-item *ngIf="event.cost">
+      <ion-item text-wrap>
         <ion-icon name="pricetags" item-left large></ion-icon>
-        <h2>¿Cuánto?</h2>
-        <ion-list>
-          <ion-item *ngFor="let c of event.cost">{{c.text}}: ${{c.value}}</ion-item>
-        </ion-list>
+        <h2>Costo</h2>
+        <table class="cost-table" *ngIf="event.cost">
+          <thead>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of event.cost">
+              <td>
+                {{c.text}}
+              </td>
+              <td>
+                ${{c.value}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p *ngIf="!event.cost">Entrada Liberada</p>
       </ion-item>
-    </ion-card-content>
+    </ion-list>
   </ion-card>
 </ion-content>

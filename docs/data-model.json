@@ -1,0 +1,37 @@
+// Event model
+{
+  "title": "String",
+  "category": "String",
+  "description": "String",
+  "when": {
+    "start": "ISODate",
+    "finish": "ISODate"
+  },
+  "where": "String",
+  "cost": [{
+    "text": "String",
+    "value": "Number"
+  }]
+}
+
+// New version
+{
+  "title": "String",
+  "category": "String",
+  "description": "String",
+  "when": {
+    "start": "ISODate",
+    "finish": "ISODate"
+  },
+  "where": {
+    "address": "String",
+    "location": {
+      "type": "String",
+      "coordinates": ["Number", "Number"]
+    }
+  },
+  "cost": [{
+    "text": "String",
+    "value": "Number"
+  }]
+}
